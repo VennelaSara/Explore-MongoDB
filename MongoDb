@@ -1,0 +1,980 @@
+    [
+    {name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ]    
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8193'),
+    name: 'sreeja',
+    age: 35,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8192'),
+    name: 'swathi',
+    age: 80,
+    gpa: 3.2
+  }
+]
+school> db.students.find().sort({gpa:1})
+[
+  {
+    _id: ObjectId('672a2a1641a02bb0c00d8196'),
+    name: 'John',
+    adress: { street: '123 st', city: 'Skl', zip: 123 }
+  },
+  {
+    _id: ObjectId('672a290141a02bb0c00d8194'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    fullTime: false,
+    registerDate: ISODate('2024-11-05T14:17:37.967Z'), 
+    graduationDate: null
+  },
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8191'),
+    name: 'Manasa',
+    age: 100,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8192'),
+    name: 'swathi',
+    age: 80,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8193'),
+    name: 'sreeja',
+    age: 35,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a280a08b83648b4aed0d6'),
+    name: 'Haritha',
+    age: 37,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a298d41a02bb0c00d8195'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ]    
+  }
+]
+school> db.students.find().limit(1)
+[
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  }
+]
+school> db.students.find().limit(3)
+[
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8191'),
+    name: 'Manasa',
+    age: 100,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8192'),
+    name: 'swathi',
+    age: 80,
+    gpa: 3.2
+  }
+]
+school> db.students.find().sort({gpa:1}).limit(3)      
+[
+  {
+    _id: ObjectId('672a2a1641a02bb0c00d8196'),
+    name: 'John',
+    adress: { street: '123 st', city: 'Skl', zip: 123 }
+  },
+  {
+    _id: ObjectId('672a290141a02bb0c00d8194'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    fullTime: false,
+    registerDate: ISODate('2024-11-05T14:17:37.967Z'), 
+    graduationDate: null
+  },
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  }
+]
+school> db.students.find({name:"Vennela"})
+[
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  }
+]
+school> db.students.find({gpa:3.2})
+[
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8191'),
+    name: 'Manasa',
+    age: 100,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8192'),
+    name: 'swathi',
+    age: 80,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8193'),
+    name: 'sreeja',
+    age: 35,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a280a08b83648b4aed0d6'),
+    name: 'Haritha',
+    age: 37,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a298d41a02bb0c00d8195'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ]    
+  }
+]
+school> db.students.find({fullTime:false})
+[
+  {
+    _id: ObjectId('672a290141a02bb0c00d8194'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    fullTime: false,
+    registerDate: ISODate('2024-11-05T14:17:37.967Z'), 
+    graduationDate: null
+  }
+]
+school> db.students.find({fullTime:false},{name:"Larry"})
+[ { _id: ObjectId('672a290141a02bb0c00d8194'), name: 'Larry' } ]
+school> db.students.find({},{name:true})
+[
+  { _id: ObjectId('672a26b641a02bb0c00d8190'), name: 'Vennela' },
+  { _id: ObjectId('672a272d41a02bb0c00d8191'), name: 'Manasa' },
+  { _id: ObjectId('672a272d41a02bb0c00d8192'), name: 'swathi' },
+  { _id: ObjectId('672a272d41a02bb0c00d8193'), name: 'sreeja' },
+  { _id: ObjectId('672a280a08b83648b4aed0d6'), name: 'Haritha' },
+  { _id: ObjectId('672a290141a02bb0c00d8194'), name: 'Larry' },
+  { _id: ObjectId('672a298d41a02bb0c00d8195'), name: 'shaw' },
+  { _id: ObjectId('672a2a1641a02bb0c00d8196'), name: 'John' }
+]
+school> db.students.find({},{_id:false,name:true})     
+[
+  { name: 'Vennela' },
+  { name: 'Manasa' },
+  { name: 'swathi' },
+  { name: 'sreeja' },
+  { name: 'Haritha' },
+  { name: 'Larry' },
+  { name: 'shaw' },
+  { name: 'John' }
+]
+school> db.students.updateOne({name:"swathi"},{$set:{age:65}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.updateOne({_id:ObjectId('672a272d41a02bb0c00d8192')},{$set:{age:64}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.updateOne({_id:ObjectId('672a290141a02bb0c00d8194')},{$unset:{fullTime:false}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.updateMany({},{$set:{fullTime:false}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 8,
+  modifiedCount: 8,
+  upsertedCount: 0
+}
+school> db.students.find()
+[
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8191'),
+    name: 'Manasa',
+    age: 100,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8192'),
+    name: 'swathi',
+    age: 64,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8193'),
+    name: 'sreeja',
+    age: 35,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a280a08b83648b4aed0d6'),
+    name: 'Haritha',
+    age: 37,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a290141a02bb0c00d8194'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    registerDate: ISODate('2024-11-05T14:17:37.967Z'), 
+    graduationDate: null,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a298d41a02bb0c00d8195'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],   
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a2a1641a02bb0c00d8196'),
+    name: 'John',
+    adress: { street: '123 st', city: 'Skl', zip: 123 },
+    fullTime: false
+  }
+]
+school> db.students.updateOne({name:"Vennela"},{age:20})
+MongoInvalidArgumentError: Update document requires atomic operators
+school> db.students.updateOne({name:"Vennela"},{$set:{age:20}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.find()
+[
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 20,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8191'),
+    name: 'Manasa',
+    age: 100,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8192'),
+    name: 'swathi',
+    age: 64,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8193'),
+    name: 'sreeja',
+    age: 35,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a280a08b83648b4aed0d6'),
+    name: 'Haritha',
+    age: 37,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a290141a02bb0c00d8194'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    registerDate: ISODate('2024-11-05T14:17:37.967Z'), 
+    graduationDate: null,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a298d41a02bb0c00d8195'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],   
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a2a1641a02bb0c00d8196'),
+    name: 'John',
+    adress: { street: '123 st', city: 'Skl', zip: 123 },
+    fullTime: false
+  }
+]
+school> db.students.updateOne({name:"Larry"},{$set:{fullTime:""}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.find()
+[
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 20,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8191'),
+    name: 'Manasa',
+    age: 100,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8192'),
+    name: 'swathi',
+    age: 64,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8193'),
+    name: 'sreeja',
+    age: 35,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a280a08b83648b4aed0d6'),
+    name: 'Haritha',
+    age: 37,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a290141a02bb0c00d8194'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    registerDate: ISODate('2024-11-05T14:17:37.967Z'), 
+    graduationDate: null,
+    fullTime: ''
+  },
+  {
+    _id: ObjectId('672a298d41a02bb0c00d8195'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],   
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a2a1641a02bb0c00d8196'),
+    name: 'John',
+    adress: { street: '123 st', city: 'Skl', zip: 123 },
+    fullTime: false
+  }
+]
+school> db.students.updateMany({fullTime:{$exists:false}},{fullTime:true})
+MongoInvalidArgumentError: Update document requires atomic operators
+school> db.students.updateMany({fullTime:{$exists:false}},($set:{fullTime:true}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:55)     
+
+> 1 | db.students.updateMany({fullTime:{$exists:false}},($set:{fullTime:true}})
+    |                                                  
+      ^
+  2 |
+
+school> db.students.updateMany({fullTime:{$exists:false}},{$set:{fullTime:true}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+school> db.students.find()
+[
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 20,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8191'),
+    name: 'Manasa',
+    age: 100,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8192'),
+    name: 'swathi',
+    age: 64,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8193'),
+    name: 'sreeja',
+    age: 35,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a280a08b83648b4aed0d6'),
+    name: 'Haritha',
+    age: 37,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a290141a02bb0c00d8194'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    registerDate: ISODate('2024-11-05T14:17:37.967Z'), 
+    graduationDate: null,
+    fullTime: ''
+  },
+  {
+    _id: ObjectId('672a298d41a02bb0c00d8195'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],   
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a2a1641a02bb0c00d8196'),
+    name: 'John',
+    adress: { street: '123 st', city: 'Skl', zip: 123 },
+    fullTime: false
+  }
+]
+school> db.students.deleteOne({name:"Larry"})
+{ acknowledged: true, deletedCount: 1 }
+school> db.students.find()
+[
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 20,
+    gpa: 3.2,
+    fullTime: 'True'
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8191'),
+    name: 'Manasa',
+    age: 100,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8192'),
+    name: 'swathi',
+    age: 64,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a272d41a02bb0c00d8193'),
+    name: 'sreeja',
+    age: 35,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a280a08b83648b4aed0d6'),
+    name: 'Haritha',
+    age: 37,
+    gpa: 3.2,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a298d41a02bb0c00d8195'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],   
+    fullTime: false
+  },
+  {
+    _id: ObjectId('672a2a1641a02bb0c00d8196'),
+    name: 'John',
+    adress: { street: '123 st', city: 'Skl', zip: 123 },
+    fullTime: false
+  }
+]
+school> db.students.deleteMany({fullTime:false})       
+{ acknowledged: true, deletedCount: 6 }
+school> db.students.find()
+[
+  {
+    _id: ObjectId('672a26b641a02bb0c00d8190'),
+    name: 'Vennela',
+    age: 20,
+    gpa: 3.2,
+    fullTime: 'True'
+  }
+]
+school> db.students.deleteMany({registerDate:{$exists:false}})
+{ acknowledged: true, deletedCount: 1 }
+school> db.students.find()
+
+school> db.students.insertOne({name:"Vennela",age:30,gpa:3.2})
+{
+  acknowledged: true,
+  insertedId: ObjectId('672a3a4d41a02bb0c00d8197')     
+}
+school> db.students.insertOne({name:"John",adress:{street:"123 st",city:"Skl",zip:123}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('672a3a5d41a02bb0c00d8198')     
+}
+school> db.students.updateOne({name:"swathi"},{$set:{age:65}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+school> db.students.insertOne({name:"shaw",age:32,gpa:3.2,courses:["Biology","Chemistry","Calculus"])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:92)     
+
+> 1 | db.students.insertOne({name:"shaw",age:32,gpa:3.2,courses:["Biology","Chemistry","Calculus"])
+    |                                                  
+                                           ^
+  2 |
+
+school> db.students.insertOne({name:"shaw",age:32,gpa:3.2,courses:["Biology","Chemistry","Calculus"]})        
+{
+  acknowledged: true,
+  insertedId: ObjectId('672a3a7f41a02bb0c00d8199')     
+}
+school> db.students.find({name:{$ne:"shaw"}})
+[
+  {
+    _id: ObjectId('672a3a4d41a02bb0c00d8197'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a3a5d41a02bb0c00d8198'),
+    name: 'John',
+    adress: { street: '123 st', city: 'Skl', zip: 123 }
+  }
+]
+school> db.students.find({age:{$lt:20}})
+
+school> db.students.find({age:{$lt:35}})
+[
+  {
+    _id: ObjectId('672a3a4d41a02bb0c00d8197'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a3a7f41a02bb0c00d8199'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ]    
+  }
+]
+school> db.students.find({age:{$lte:32}})
+[
+  {
+    _id: ObjectId('672a3a4d41a02bb0c00d8197'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a3a7f41a02bb0c00d8199'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ]    
+  }
+]
+school> db.students.find({age:{$gt:32}})
+
+school> db.students.find({age:{$gt:20}})
+[
+  {
+    _id: ObjectId('672a3a4d41a02bb0c00d8197'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a3a7f41a02bb0c00d8199'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ]    
+  }
+]
+school> db.students.find({age:{$gte:28}})
+[
+  {
+    _id: ObjectId('672a3a4d41a02bb0c00d8197'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a3a7f41a02bb0c00d8199'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ]    
+  }
+]
+school> db.students.find({gpa:{$gte:3,$lte:4}})        
+[
+  {
+    _id: ObjectId('672a3a4d41a02bb0c00d8197'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a3a7f41a02bb0c00d8199'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ]    
+  }
+]
+school> db.students.find({name:{$in:["Vennela","shaw"]}})
+[
+  {
+    _id: ObjectId('672a3a4d41a02bb0c00d8197'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a3a7f41a02bb0c00d8199'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ]    
+  }
+]
+school> db.students.find({name:{$nin:["Vennela","shaw"]}})
+[
+  {
+    _id: ObjectId('672a3a5d41a02bb0c00d8198'),
+    name: 'John',
+    adress: { street: '123 st', city: 'Skl', zip: 123 }
+  }
+]
+school> db.students.find({$and:[{fullTime:true},{age:{$lte:22}}]})
+
+school> db.students.find({$or:[{fullTime:true},{age:{$lte:22}}]})
+
+school> db.students.find({$nor:[{fullTime:true},{age:{$lte:22}}]})
+[
+  {
+    _id: ObjectId('672a3a4d41a02bb0c00d8197'),
+    name: 'Vennela',
+    age: 30,
+    gpa: 3.2
+  },
+  {
+    _id: ObjectId('672a3a5d41a02bb0c00d8198'),
+    name: 'John',
+    adress: { street: '123 st', city: 'Skl', zip: 123 }
+  },
+  {
+    _id: ObjectId('672a3a7f41a02bb0c00d8199'),
+    name: 'shaw',
+    age: 32,
+    gpa: 3.2,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ]    
+  }
+]
+school> db.students.find({age:{$not:{$gte:30}}})       
+[
+  {
+    _id: ObjectId('672a3a5d41a02bb0c00d8198'),
+    name: 'John',
+    adress: { street: '123 st', city: 'Skl', zip: 123 }
+  }
+]
+school> db.students.find({name:"Vennela"}).explain("executionStats")
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'school.students',
+    parsedQuery: { name: { '$eq': 'Vennela' } },       
+    indexFilterSet: false,
+    queryHash: '544F3E5C',
+    planCacheKey: 'B9363AF4',
+    optimizationTimeMillis: 0,
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    prunedSimilarIndexes: false,
+    winningPlan: {
+      isCached: false,
+      stage: 'COLLSCAN',
+      filter: { name: { '$eq': 'Vennela' } },
+      direction: 'forward'
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1,
+    executionTimeMillis: 0,
+    totalKeysExamined: 0,
+    totalDocsExamined: 3,
+    executionStages: {
+      isCached: false,
+      stage: 'COLLSCAN',
+      filter: { name: { '$eq': 'Vennela' } },
+      nReturned: 1,
+      executionTimeMillisEstimate: 0,
+      works: 4,
+      advanced: 1,
+      needTime: 2,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      direction: 'forward',
+      docsExamined: 3
+    }
+  },
+  command: { find: 'students', filter: { name: 'Vennela' }, '$db': 'school' },
+  serverInfo: {
+    host: 'LAPTOP-SPUCEA9U',
+    port: 27017,
+    version: '8.0.3',
+    gitVersion: '89d97f2744a2b9851ddfb51bdf22f687562d9b06'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,      
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,     
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted', 
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}
+school> db.students.createIndex({name:1})
+name_1
+school> db.students.find({name:"Vennela"}).explain("executionStats")
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'school.students',
+    parsedQuery: { name: { '$eq': 'Vennela' } },       
+    indexFilterSet: false,
+    queryHash: '544F3E5C',
+    planCacheKey: 'EEE0759C',
+    optimizationTimeMillis: 0,
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    prunedSimilarIndexes: false,
+    winningPlan: {
+      isCached: false,
+      stage: 'FETCH',
+      inputStage: {
+        stage: 'IXSCAN',
+        keyPattern: { name: 1 },
+        indexName: 'name_1',
+        isMultiKey: false,
+        multiKeyPaths: { name: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { name: [ '["Vennela", "Vennela"]' ] }
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1,
+    executionTimeMillis: 18,
+    totalKeysExamined: 1,
+    totalDocsExamined: 1,
+    executionStages: {
+      isCached: false,
+      stage: 'FETCH',
+      nReturned: 1,
+      executionTimeMillisEstimate: 15,
+      works: 2,
+      advanced: 1,
+      needTime: 0,
+      needYield: 0,
+      saveState: 1,
+      restoreState: 1,
+      isEOF: 1,
+      docsExamined: 1,
+      alreadyHasObj: 0,
+      inputStage: {
+        stage: 'IXSCAN',
+        nReturned: 1,
+        executionTimeMillisEstimate: 15,
+        works: 2,
+        advanced: 1,
+        needTime: 0,
+        needYield: 0,
+        saveState: 1,
+        restoreState: 1,
+        isEOF: 1,
+        keyPattern: { name: 1 },
+        indexName: 'name_1',
+        isMultiKey: false,
+        multiKeyPaths: { name: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { name: [ '["Vennela", "Vennela"]' ] },
+        keysExamined: 1,
+        seeks: 1,
+        dupsTested: 0,
+        dupsDropped: 0
+      }
+    }
+  },
+  command: { find: 'students', filter: { name: 'Vennela' }, '$db': 'school' },
+  serverInfo: {
+    host: 'LAPTOP-SPUCEA9U',
+    port: 27017,
+    version: '8.0.3',
+    gitVersion: '89d97f2744a2b9851ddfb51bdf22f687562d9b06'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,      
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  ok: 1
+}
+school> db.students.getIndexes()
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { name: 1 }, name: 'name_1' }
+]
+school> db.students.dropIndex("name_1")
+{ nIndexesWas: 2, ok: 1 }
+school> show collections
+students
+school> db.createCollection("teachers",{capped:true,size:10000000,max:100},{autoIndexId:false})
+{ ok: 1 }
+school> show collections
+students
+teachers
+school> db.createCollection("Courses")
+{ ok: 1 }
+school> show collections
+Courses
+students
+teachers
+school> db.courses.drop()
+true
+school> show collections
+Courses
+students
+teachers
+school> db.Courses.drop()
+true
+school> show collections
+students
+teachers
+school>
